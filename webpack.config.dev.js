@@ -50,7 +50,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.hbs',
+      template: './src/page-template.hbs',
       title: 'Hello world',
       description: 'My description',
     }),

@@ -4,9 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    kiwi: './src/kiwi.js',
+  },
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '',
   },
@@ -43,12 +46,23 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.hbs',
+      filename: 'hello-world.html',
+      chunks: ['hello-world'],
+      template: './src/page-template.hbs',
       title: 'Hello world',
-      description: 'My description',
+      description: 'Hello world',
+      minify: false,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'kiwi.html',
+      chunks: ['kiwi'],
+      template: './src/page-template.hbs',
+      title: 'Kiwi',
+      description: 'Kiwi image',
+      minify: false,
     }),
   ],
 }
