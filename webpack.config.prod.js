@@ -10,7 +10,7 @@ module.exports = {
   //   kiwi: './src/kiwi.js',
   // },
   output: {
-    filename: '[contenthash].js',
+    filename: 'bundle.[contenthash].js',
     // filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '',
@@ -54,10 +54,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
+    new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: '[contenthash].html',
       template: './src/page-template.hbs',
       title: 'Hello world',
       description: 'Hello world',
