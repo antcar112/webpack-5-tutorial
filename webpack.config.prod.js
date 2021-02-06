@@ -4,12 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: {
-    'hello-world': './src/hello-world.js',
-    kiwi: './src/kiwi.js',
-  },
+  entry: './src/index.js',
+  // entry: {
+  //   'hello-world': './src/hello-world.js',
+  //   kiwi: './src/kiwi.js',
+  // },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[contenthash].js',
+    // filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '',
   },
@@ -52,23 +54,30 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new MiniCssExtractPlugin({ filename: '[contenthash].css' }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'hello-world.html',
-      chunks: ['hello-world'],
+      filename: '[contenthash].html',
       template: './src/page-template.hbs',
       title: 'Hello world',
       description: 'Hello world',
       minify: true,
     }),
-    new HtmlWebpackPlugin({
-      filename: 'kiwi.html',
-      chunks: ['kiwi'],
-      template: './src/page-template.hbs',
-      title: 'Kiwi',
-      description: 'Kiwi image',
-      minify: true,
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'hello-world.html',
+    //   chunks: ['hello-world'],
+    //   template: './src/page-template.hbs',
+    //   title: 'Hello world',
+    //   description: 'Hello world',
+    //   minify: true,
+    // }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'kiwi.html',
+    //   chunks: ['kiwi'],
+    //   template: './src/page-template.hbs',
+    //   title: 'Kiwi',
+    //   description: 'Kiwi image',
+    //   minify: true,
+    // }),
   ],
 }
